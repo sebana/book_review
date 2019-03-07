@@ -25,8 +25,8 @@ def new(request): #new.html을 띄워주는 함수
 
 def create(request): #입력받은 내용을 데이터베이스 넘겨주기
     blog = Blog(image=request.FILES['image'])
-    blog.title = request.GET['title']
-    blog.body = request.GET['body']
+    blog.title = request.POST['title']
+    blog.body = request.POST['body']
     blog.pub_date = timezone.datetime.now()
     blog.save()
     return redirect('/blog/'+str(blog.id))
